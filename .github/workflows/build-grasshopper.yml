@@ -7,10 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  windows-build:
-    strategy:
-      matrix:
-        configuration: [Release]
+  build:
 
     runs-on: windows-latest
 
@@ -25,27 +22,8 @@ jobs:
         uses: NuGet/setup-nuget@v1
 
       - name: Restore the application
-        run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-        env:
-          Configuration: ${{ matrix.configuration }}
-
+        run: msbuild /t:Restore /p:Configuration=Release
+       
       - name: Build the application
-        run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration
-        env:
-          Configuration: ${{ matrix.configuration }}
-
-  ubuntu-build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-
-      - name: Install dependencies
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet publish --configuration Release --no-restore
+        run: msbuild $env:Solution_Name /p:Configuration=Release
+       
