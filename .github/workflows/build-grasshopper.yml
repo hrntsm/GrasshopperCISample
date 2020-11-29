@@ -27,9 +27,8 @@ jobs:
       - name: Build the application
         run: msbuild /p:Configuration=Release
 
-      - name: Upload release build of plugin as artefact
+      - name: Upload build as artifact
         uses: actions/upload-artifact@v2
         with:
           name: GrasshopperComponent
-          path: |
-             ./GrasshopperCISample/bin/GrasshopperCISample.gha
+          path: ./GrasshopperCISample/bin/GrasshopperCISample.gha
