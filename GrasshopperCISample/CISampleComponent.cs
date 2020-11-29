@@ -56,7 +56,7 @@ namespace GrasshopperCISample
             if (!DA.GetData(0, ref a)) { return; }
             if (!DA.GetData(1, ref b)) { return; }
 
-            sum = CIMath.Add(a, b);
+            double sum = Util.Add1(a, b);
 
             DA.SetData(0, sum);
         }

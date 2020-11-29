@@ -46,8 +46,8 @@
   <ItemGroup>
     <Compile Include="CISampleComponent.cs" />
     <Compile Include="GrasshopperCISampleInfo.cs" />
-    <Compile Include="Math.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Grasshopper">
