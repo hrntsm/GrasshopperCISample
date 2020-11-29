@@ -1,39 +1,31 @@
-name: Build Grasshopper Plugin
+ï»¿name: Build Grasshopper Plugin
 
 on:
-  push: # develop ‚ÉƒvƒbƒVƒ…‚µ‚½‚Æ‚«‚É“®‚­
+  push:
     branches: [develop]
-  pull_request: # main ‚Éƒvƒ‹ƒŠƒN‚µ‚½‚Æ‚«‚É“®‚­
+  pull_request:
     branches: [main]
 
 jobs:
   build:
-    # Windows ‚ÌÅV‚ÌŠÂ‹«‚ğg—p‚·‚éiŒ»İ‚Í Windows Server 2019 ‚É‚È‚é j
-    runs-on: windows-latest # windows-2019 ‚Å‚à“¯‚¶ˆÓ–¡
+    runs-on: windows-latest
 
     steps:
-      # git ‚Ìƒ`ƒFƒbƒNƒAƒEƒg‚ğs‚¢A‚±‚ÌŠÂ‹«‚É‘ÎÛ‚ÌƒŠƒ|‚ğæ“¾‚·‚é
       - name: Checkout
         uses: actions/checkout@v2
       
-      # Vusial Studio ‚ÌƒZƒbƒgƒAƒbƒv‚ğ‚·‚é
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1
         
-      # nuget ‚ÌƒZƒbƒgƒAƒbƒv‚ğ‚·‚é
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1
 
-      # solution ƒtƒ@ƒCƒ‹‚Ìó‘Ô‚ğ•œŒ³‚·‚é
-      # —á‚¦‚ÎAnuget ‚ÅQÆ‚µ‚Ä‚¢‚éƒtƒ@ƒCƒ‹‚ğæ“¾‚·‚é‚È‚Ç
       - name: Restore the application
         run: msbuild /t:Restore /p:Configuration=Release
        
-      # Build Às
       - name: Build the application
         run: msbuild /p:Configuration=Release
 
-      # ‘ÎÛƒpƒX‚É‚ ‚éƒtƒ@ƒCƒ‹‚ğ GitHub ‚ÉƒAƒbƒvƒ[ƒh‚·‚é
       - name: Upload release build of plugin as artefact
         uses: actions/upload-artifact@v2
         with:
