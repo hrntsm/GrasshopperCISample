@@ -1,6 +1,7 @@
 ﻿using Grasshopper.Kernel;
 using Rhino.Geometry;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 
 // In order to load the result of this wizard, you will also need to
@@ -20,7 +21,7 @@ namespace GrasshopperCISample
         /// new tabs/panels will automatically be created.
         /// </summary>
         public CISampleComponent()
-          : base("CISample", "CI",
+          : base("ADD", "ADD",
               "Description",
               "PlayGround", "CISample")
         {
@@ -29,15 +30,18 @@ namespace GrasshopperCISample
         /// <summary>
         /// Registers all the input parameters for this component.
         /// </summary>
-        protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
+        protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
+            pManager.AddNumberParameter("A", "A", "A", GH_ParamAccess.item);
+            pManager.AddNumberParameter("B", "B", "B", GH_ParamAccess.item);
         }
 
         /// <summary>
         /// Registers all the output parameters for this component.
         /// </summary>
-        protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
+        protected override void RegisterOutputParams(GH_OutputParamManager pManager)
         {
+            pManager.AddNumberParameter("ADD", "ADD", "ADD", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -47,30 +51,27 @@ namespace GrasshopperCISample
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
+            double a = 0;
+            double b = 0;
+            if (!DA.GetData(0, ref a)) { return; }
+            if (!DA.GetData(1, ref b)) { return; }
+
+            sum = CIMath.Add(a, b);
+
+            DA.SetData(0, sum);
         }
 
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.
         /// Icons need to be 24x24 pixels.
         /// </summary>
-        protected override System.Drawing.Bitmap Icon
-        {
-            get
-            {
-                // You can add image files to your project resources and access them like this:
-                //return Resources.IconForThisComponent;
-                return null;
-            }
-        }
+        protected override System.Drawing.Bitmap Icon => null;
 
         /// <summary>
         /// Each component must have a unique Guid to identify it. 
         /// It is vital this Guid doesn't change otherwise old ghx files 
         /// that use the old ID will partially fail during loading.
         /// </summary>
-        public override Guid ComponentGuid
-        {
-            get { return new Guid("79e51bee-1d1b-4236-afef-d8ee49e4c0a3"); }
-        }
+        public override Guid ComponentGuid => new Guid("79e51bee-1d1b-4236-afef-d8ee49e4c0a3");
     }
 }

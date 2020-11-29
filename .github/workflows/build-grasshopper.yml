@@ -1,35 +1,41 @@
 name: Build Grasshopper Plugin
 
 on:
-  push:
+  push: # develop にプッシュしたときに動く
     branches: [develop]
-  pull_request:
+  pull_request: # main にプルリクしたときに動く
     branches: [main]
 
 jobs:
   build:
-
-    runs-on: windows-latest
+    # Windows の最新の環境を使用する（現在は Windows Server 2019 になる ）
+    runs-on: windows-latest # windows-2019 でも同じ意味
 
     steps:
+      # git のチェックアウトを行い、この環境に対象のリポを取得する
       - name: Checkout
         uses: actions/checkout@v2
-
+      
+      # Vusial Studio のセットアップをする
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1
-
+        
+      # nuget のセットアップをする
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1
 
+      # solution ファイルの状態を復元する
+      # 例えば、nuget で参照しているファイルを取得するなど
       - name: Restore the application
         run: msbuild /t:Restore /p:Configuration=Release
        
+      # Build 実行
       - name: Build the application
         run: msbuild /p:Configuration=Release
 
+      # 対象パスにあるファイルを GitHub にアップロードする
       - name: Upload release build of plugin as artefact
         uses: actions/upload-artifact@v2
         with:
           name: GrasshopperComponent
-          path: |
-             ./GrasshopperCISample/bin/GrasshopperCISample.gha
+          path: ./GrasshopperCISample/bin/GrasshopperCISample.gha
