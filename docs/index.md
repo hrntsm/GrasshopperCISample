@@ -1,37 +1,60 @@
-## Welcome to GitHub Pages
+## ようこそ、ゆっくりしていってね
 
-You can use the [editor on GitHub](https://github.com/hrntsm/GrasshopperCISample/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+Grasshopper コンポーネントを開発して、それを紹介するサイトを GitHub Pages で作るサンプルページです。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+## コンポーネント紹介
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### ADD コンポーネント
 
-```markdown
-Syntax highlighted code block
+![](./Images/ADD.png)
 
-# Header 1
-## Header 2
-### Header 3
+入力された数値を足してその結果を返すコンポーネントです。
 
-- Bulleted
-- List
+入力
+- A
+- B
+  - 足し合わせたい二つの数字
 
-1. Numbered
-2. List
+出力
+- Result
+  - 足し算した結果
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
+### LineLength コンポーネント
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+![](./Images/LineLength.png)
 
-### Jekyll Themes
+入力された Line の長さを返すコンポーネントです。
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/hrntsm/GrasshopperCISample/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+入力
+- Line
+  - 長さを測りたい Line
 
-### Support or Contact
+出力
+- Result
+  - 長さを計算した結果
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### LineDivide コンポーネント
+
+![](./Images/LineDivide.png)
+
+入力された Line を入力された数で分割して返すコンポーネントです。
+
+入力
+- Line
+  - 分割したい Line
+- nDiv
+  - 分割数
+
+出力
+- Result
+  - 分割した Line
+
+
+## コンタクト
+
+何かあればこちらに気軽に連絡ください！！！
+
+[Twitter @hiron_rgkr](https://twitter.com/hiron_rgkr)
+
