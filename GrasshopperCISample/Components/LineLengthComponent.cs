@@ -1,17 +1,15 @@
-﻿using Grasshopper.Kernel;
+﻿using System;
+using Grasshopper.Kernel;
 using Rhino.Geometry;
-using System;
-using System.CodeDom;
-using System.Collections.Generic;
 
 // In order to load the result of this wizard, you will also need to
 // add the output bin/ folder of this project to the list of loaded
 // folder in Grasshopper.
 // You can use the _GrasshopperDeveloperSettings Rhino command for that.
 
-namespace GrasshopperCISample
+namespace GrasshopperCISample.Components
 {
-    public class CISampleComponent : GH_Component
+    public class LineLengthComponent : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -20,8 +18,8 @@ namespace GrasshopperCISample
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public CISampleComponent()
-          : base("ADD", "ADD",
+        public LineLengthComponent()
+          : base("LineLength", "LineLength",
               "Description",
               "PlayGround", "CISample")
         {
@@ -32,8 +30,7 @@ namespace GrasshopperCISample
         /// </summary>
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddNumberParameter("A", "A", "A", GH_ParamAccess.item);
-            pManager.AddNumberParameter("B", "B", "B", GH_ParamAccess.item);
+            pManager.AddLineParameter("Line", "Line", "Line", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -41,7 +38,7 @@ namespace GrasshopperCISample
         /// </summary>
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
         {
-            pManager.AddNumberParameter("ADD", "ADD", "ADD", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Result", "Result", "Result", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -51,14 +48,12 @@ namespace GrasshopperCISample
         /// to store data in output parameters.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            double a = 0;
-            double b = 0;
-            if (!DA.GetData(0, ref a)) { return; }
-            if (!DA.GetData(1, ref b)) { return; }
+            var ln = new  Line();
+            if (!DA.GetData(0, ref ln)) { return; }
 
-            double sum = Util.Addd(a, b);
+            double length = Util.LineLength(ln);
 
-            DA.SetData(0, sum);
+            DA.SetData(0, length);
         }
 
         /// <summary>
@@ -72,6 +67,6 @@ namespace GrasshopperCISample
         /// It is vital this Guid doesn't change otherwise old ghx files 
         /// that use the old ID will partially fail during loading.
         /// </summary>
-        public override Guid ComponentGuid => new Guid("79e51bee-1d1b-4236-afef-d8ee49e4c0a3");
+        public override Guid ComponentGuid => new Guid("769468BC-BC08-4DFF-824B-7C996B8A4BFC");
     }
 }

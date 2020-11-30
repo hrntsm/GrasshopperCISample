@@ -44,7 +44,9 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CISampleComponent.cs" />
+    <Compile Include="Components\LineDivideComponent.cs" />
+    <Compile Include="Components\LineLengthComponent.cs" />
+    <Compile Include="Components\AddComponent.cs" />
     <Compile Include="GrasshopperCISampleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util.cs" />
