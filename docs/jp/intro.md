@@ -10,7 +10,7 @@ title: "はじめに"
 そんな中で、作成するコードの品質などを一人で担保することはなかなかに難しいです。
 そこで CI（継続的インテグレーション）を使ってオートで自分のコードをレビューしてくれる仕組みを整えて、品質の高いコードの書き方を考えてみましょう。
 
-# ちなみに
+## ちなみに
 
 こちらは [Tokyo AEC Industry Dev Group](https://www.meetup.com/ja-JP/Tokyo-AEC-Industry-Dev-Group) で行われる 2020/12/12 のハンズオンの資料になります。
 
@@ -18,3 +18,5 @@ title: "はじめに"
 
 ### 次のページ
 [GitHub Actions でコンポーネントをビルドする](build-with-github-actions)
+
+[トップに戻る](tutorial-chapters)

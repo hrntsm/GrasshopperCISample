@@ -1,12 +1,10 @@
----
-title: "各 CI の結果をバッジにして README に張り付ける"
----
+# 各 CI の結果をバッジにして README に張り付ける
 
-# はじめに
+## はじめに
 
 この章では、README に CI 結果のバッジのつけ方について説明します。
 
-# ビルド結果のバッジを取得する
+## ビルド結果のバッジを取得する
 
 結果をバッジとして取得できます。これを使うことで整備されたリポジトリのような気持ちになれます。
 バッジの作成には [shields.io](https://shields.io/category/build) というサービスを使うと便利です。以下のようにリポの情報を入れると自動で情報を取得してバッジを作成してくれます。
@@ -15,7 +13,7 @@ title: "各 CI の結果をバッジにして README に張り付ける"
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/image/Shields.io.png?raw=true)
 
-# Codacy の結果のバッジを取得する
+## Codacy の結果のバッジを取得する
 
 Codacy
 
@@ -23,13 +21,13 @@ Codacy
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/CodacyBatch.png?raw=true)
 
-# Code Climate の結果のバッジを取得する
+## Code Climate の結果のバッジを取得する
 
 対象の Code Climate のページに行き Repo Settings の Badges から Maintainability Badge の箇所で取得できます。
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/ClimateBadge.png?raw=true)
 
-# 結果
+## 結果
 
 各箇所で取得したバッジの画像のリンクを README に書き込みましょう。
 
@@ -39,8 +37,10 @@ Codacy
 
 ---
 
-### 前のページ
+### 前ページ
 [Code Maintainability を測る](code-maintenace)
 
-### 次のページ
+### 次ページ
 [GitHub pages を使って作ったものを紹介するページを作る](add-github-pages)
+
+[トップに戻る](tutorial-chapters)

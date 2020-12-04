@@ -1,13 +1,11 @@
----
-title: "GitHub Actions でコンポーネントをビルドする"
----
+# GitHub Actions でコンポーネントをビルドする
 
-# はじめに
+## はじめに
 
 この章では、Grasshopper というソフトで動作するコンポーネント（プラグイン）を、Github Actions を使ってビルドする方法についてを紹介します。
 要は、.NET Framework を Github Actions で使ってビルドする方法になります。
 
-# GitHub Actions とは
+## GitHub Actions とは
 
 以下公式より引用 [GitHub Actions](https://github.co.jp/features/actions)
 
@@ -15,7 +13,7 @@ title: "GitHub Actions でコンポーネントをビルドする"
 
 GitHub のリポにプッシュやプルリクなどの設定したアクションをしたときに、仮想マシンやコンテナを使ってテストやビルドなどを行える機能です。
 
-# やりたいこと
+## やりたいこと
 
 以下のときに、GitHub Actions を使ってコンポーネントをビルドして GitHub 上に保存する。
 
@@ -24,7 +22,7 @@ GitHub のリポにプッシュやプルリクなどの設定したアクショ�
 
 GitHub Actions は Windows 環境にも対応しているため、Windows 環境で Visual Studio を使ってビルドさせることを行います。
 
-# ローカルでの支度
+## ローカルでの支度
 
 Grasshopper コンポーネントの開発には Visual Studio 2019 を使います。0 から開発するのは大変なので、以下から開発用のテンプレートをダウンロードして使用します。
 
@@ -37,7 +35,7 @@ nuget パッケージの管理形式は、Package.config ではなく、PackageR
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/image/PackageReference.png?raw=true)
 
-# GitHub Actions の設定の仕方
+## GitHub Actions の設定の仕方
 
 GitHub Actions は、YAML 構文を使用してイベント、ジョブ、およびステップを定義しています。
 
@@ -93,7 +91,7 @@ jobs:
           path: ./GrasshopperCISample/bin/GrasshopperCISample.gha
 ```
 
-# 動作確認
+## 動作確認
 
 上記ファイルをリモートの develop にプッシュすると、Actions が動き出します。動作は GitHub の対象のリポの Actions のタブをクリックすると確認できます。Actions が動いているときは以下のようにオレンジ色の丸が表示され、問題なく動作が完了すると緑のㇾマーク、何かエラーがあり止まると赤色の × マークになります。
 
@@ -103,7 +101,7 @@ jobs:
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/image/Artifact.png?raw=true)
 
-# これをやる利点
+## これをやる利点
 
 例えばリリースするデータを main ブランチで管理しているとします。main ブランチに直接プッシュしたとき、そのデータがちゃんとビルドできるデータであるかは個人の注意に依存しています。
 それを避けるために、main ブランチにプルリクした際、ここで設定した CI が動くようにしています。
@@ -118,3 +116,5 @@ jobs:
 
 ### 次のページ
 [Code Quality を測る](code-quality)
+
+[トップに戻る](tutorial-chapters)
