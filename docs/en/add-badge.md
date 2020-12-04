@@ -1,38 +1,42 @@
----
-title: "各 CI の結果をバッジにして README に張り付ける"
----
+# Add Badge to README
 
-# はじめに
+This chapter describes how to badge the CI results in the README.
 
-この章では、README に CI 結果のバッジのつけ方について説明します。
+## Getting a badge of build results
 
-# ビルド結果のバッジを取得する
+You can get the results as a badge. Using it makes you feel like a well-maintained repository.
+To create badges, you can use the service [shields.io](https://shields.io/category/build) to create them. If you enter information about the repo as shown below, it will automatically fetch the information and create a badge for you.
 
-結果をバッジとして取得できます。これを使うことで整備されたリポジトリのような気持ちになれます。
-バッジの作成には [shields.io](https://shields.io/category/build) というサービスを使うと便利です。以下のようにリポの情報を入れると自動で情報を取得してバッジを作成してくれます。
-
-ここでは build が通っているかどうかのバッジが作成されますので、それを README などに張り付けるとバッジをリポジトリに表示できます。
+You can paste it into your README and display the badge in the repository.
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/image/Shields.io.png?raw=true)
 
-# Codacy の結果のバッジを取得する
+## Getting Codacy Result Badge
 
-Codacy
-
-対象の Codacy のページに行き Settings の General から Codacy Badge の箇所で取得できます。
+You can get it by going to the target Codacy page and going to the Codacy Badge section in the General section of Settings.
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/CodacyBatch.png?raw=true)
 
-# Code Climate の結果のバッジを取得する
+## Get a Code Climate result badge
 
-対象の Code Climate のページに行き Repo Settings の Badges から Maintainability Badge の箇所で取得できます。
+Go to the target Code Climate page to get the Maintainability Badge under Badges in Repo Settings.
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/ClimateBadge.png?raw=true)
 
-# 結果
+## Result
 
-各箇所で取得したバッジの画像のリンクを README に書き込みましょう。
+Write a link to the image of the badge retrieved at each location in your README.
 
-いいね 👍
+Good 👍
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/README.png?raw=true)
+
+---
+
+### Prev
+[Evaluate Code Maintainability](code-maintenace)
+
+### Next
+[Create your own pages using GitHub Pages](add-github-pages)
+
+[Return to Top](tutorial-chapters)

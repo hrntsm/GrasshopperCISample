@@ -1,15 +1,18 @@
+# Introduction
+
+This page introduces an example of using CI, taking as an example the development of a component (plug-in) of Grasshopper, which is commonly used in architecture.
+
+Most people who develop in the Japan architecture field are individuals and rarely develop in a group while receiving a thorough review (according to my research).
+In such a situation, it is difficult to ensure the quality of the code you create by yourself.
+So let's consider how to write quality code by setting up a system that automatically reviews your code using CI (Continuous Integration).
+
+## BTW
+
+Here are the materials for the 2020/12/12 hands-on at the [Tokyo AEC Industry Dev Group](https://www.meetup.com/ja-JP/Tokyo-AEC-Industry-Dev-Group).
+
 ---
-title: "はじめに"
----
 
-# イントロ
+### Next
+[Built with GitHub Actions](build-with-github-actions)
 
-この本では、建築系でよく使われている Grasshopper というソフトのコンポーネント（プラグイン）の開発を例にとって、CI を使う一例の紹介をします。
-
-建築系で開発する人の多くは個人であり、グループでしっかりとレビューを受けながら開発することは少ないです（私調べ）。
-そんな中で、作成するコードの品質などを一人で担保することはなかなかに難しいです。
-そこで CI（継続的インテグレーション）を使ってオートで自分のコードをレビューしてくれる仕組みを整えて、品質の高いコードの書き方を考えてみましょう。
-
-# ちなみに
-
-こちらは [Tokyo AEC Industry Dev Group](https://www.meetup.com/ja-JP/Tokyo-AEC-Industry-Dev-Group) で行われる 2020/12/12 のハンズオンの資料になります。
+[Return to Top](tutorial-chapters)

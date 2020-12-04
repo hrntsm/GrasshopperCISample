@@ -1,91 +1,87 @@
----
-title: "GitHub Actions でコンポーネントをビルドする"
----
+# Built with GitHub Actions
 
-# はじめに
+In this chapter, I'll show you how to build components (plugins) that work with Grasshopper software using Github Actions.
+In short, you can build .NET Framework with Github Actions.
 
-この章では、Grasshopper というソフトで動作するコンポーネント（プラグイン）を、Github Actions を使ってビルドする方法についてを紹介します。
-要は、.NET Framework を Github Actions で使ってビルドする方法になります。
+## What's GitHub Actions
 
-# GitHub Actions とは
+Refer to  [GitHub Actions](https://github.co.jp/features/actions)
 
-以下公式より引用 [GitHub Actions](https://github.co.jp/features/actions)
+> GitHub Actions makes it easy to automate your entire software workflow in a world class CI/CD. Build, test, and deploy code directly from GitHub and make code review, branching, and issue triage work the way you want them to.
 
-> GitHub Actions を使用すると、ワールドクラスの CI / CD ですべてのソフトウェアワークフローを簡単に自動化できます。 GitHub から直接コードをビルド、テスト、デプロイでき、コードレビュー、ブランチ管理、問題のトリアージを希望どおりに機能させます。
+The ability to test and build using a virtual machine or container when you do a configured action such as a push or pull request to a GitHub repo.
 
-GitHub のリポにプッシュやプルリクなどの設定したアクションをしたときに、仮想マシンやコンテナを使ってテストやビルドなどを行える機能です。
+## Things to do
 
-# やりたいこと
+Build a component using GitHub Actions and save it on GitHub when you do the following
 
-以下のときに、GitHub Actions を使ってコンポーネントをビルドして GitHub 上に保存する。
+- Push or pull requests to the develop branch
+- Pull request to main branch
 
-- develop にプッシュ、プルリク
-- main にプルリク
+Because GitHub Actions are also available for the Windows environment, we will use Visual Studio to build it in the Windows environment.
 
-GitHub Actions は Windows 環境にも対応しているため、Windows 環境で Visual Studio を使ってビルドさせることを行います。
+## Preparing on your PC
 
-# ローカルでの支度
-
-Grasshopper コンポーネントの開発には Visual Studio 2019 を使います。0 から開発するのは大変なので、以下から開発用のテンプレートをダウンロードして使用します。
+To develop the Grasshopper components, we will use Visual Studio 2019, and since it is hard to develop from scratch, we will download and use the development templates below.
 
 [Grasshopper templates for v6](https://marketplace.visualstudio.com/items?itemName=McNeel.GrasshopperAssemblyforv6)
 
-こちらのテンプレートを使用すると、RhinoCommon.dll や GH_IO.dll などの参照がローカルになっています。GitHub の環境では当然ですが Rhino がインストールされていないため、これらの dll ファイルはローカルにないので、nuget を使ったものに修正してください。
-余談ですが、nuget の Rhino 関連のものの最新版は Rhino7 向けになっています。Rhino6 向けに使う場合は 6.XX で書かれているバージョンを使いましょう。
+Using this template, references to RhinoCommon.dll, GH_IO.dll, etc., are localized; in the GitHub environment, of course, these dll files are not local because Rhino is not installed, so we used nuget to fix it.
+As a side note, the latest version of nuget for Rhino is for Rhino7; for Rhino6, use the version written in 6.xx.
 
-nuget パッケージの管理形式は、Package.config ではなく、PackageReference にしてください。
+The management format for nuget packages should be PackageReference, not Package.config.
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/image/PackageReference.png?raw=true)
 
-# GitHub Actions の設定の仕方
+## How to set up GitHub Actions
 
-GitHub Actions は、YAML 構文を使用してイベント、ジョブ、およびステップを定義しています。
+GitHub Actions uses the YAML syntax to define events, jobs, and steps.
 
-この YAML ファイルを、コードリポジトリの .github/workflows というディレクトリに保存することで、動作の対象になります。
-ファイル名は何でも構いません。
+You can save this YAML file to a directory in your code repository called .github/workflows for actions.
+The file can be named anything.
 
-ファイルの内容は以下になります。適宜コメントアウトで説明しています。
-やっていることを要約すると、MSBuild を使って対象のプロジェクトファイルをビルドしています。
+The contents of the file are as follows We explain it in the comments out as appropriate.
+To summarize what we are doing, we are using MSBuild to build the target project file.
 
 ```yml
-# このワークフローの名前（バッジを作るときなどに使う）
+# The name of this workflow (used for example when making a badge)
 name: Build Grasshopper Plugin
 
 on:
-  push: # develop にプッシュしたときに動く
+  push: # Run when pushed to develop
     branches: [develop]
-  pull_request: # main と develop にプルリクしたときに動く
+  pull_request: # Run when pull request to main and develop
     branches: [main, develop]
 
 jobs:
   build:
-    # Github Actions での Windows の最新の環境を指定
-    #（現在は Windows Server 2019 になる ）
-    runs-on: windows-latest # windows-2019 でも同じ意味
+    # Specify the latest environment for Windows in Github Actions
+    # (now goes to Windows Server 2019 )
+    runs-on: windows-latest # same as windows-2019
 
     steps:
-      # git のチェックアウトを行い、この環境に対象のリポを取得する
+      # Check out git and get the target repo in this environment
       - name: Checkout
         uses: actions/checkout@v2
 
-      # Vusial Studio (MSBuild)のセットアップをする
+      # Set up Vusial Studio (MSBuild)
       - name: Setup MSBuild.exe
         uses: microsoft/setup-msbuild@v1
 
-      # nuget のセットアップをする
+      # Set up nuget
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1
 
-      # solution ファイルの状態を復元する
-      # 例えば、nuget で参照しているファイルを取得するなど
+      # Restore solution file
+      # For example, to get the files referenced in nuget, etc.
       - name: Restore the application
         run: msbuild /t:Restore /p:Configuration=Release
 
-      # Build 実行
+      # Build
       - name: Build the application
         run: msbuild /p:Configuration=Release
 
-      # 対象パスにあるファイルを GitHub にアップロードする
+      # Upload files in the target path to GitHub
       - name: Upload build as artifact
         uses: actions/upload-artifact@v2
         with:
@@ -93,20 +89,30 @@ jobs:
           path: ./GrasshopperCISample/bin/GrasshopperCISample.gha
 ```
 
-# 動作確認
+## Confirmation
 
-上記ファイルをリモートの develop にプッシュすると、Actions が動き出します。動作は GitHub の対象のリポの Actions のタブをクリックすると確認できます。Actions が動いているときは以下のようにオレンジ色の丸が表示され、問題なく動作が完了すると緑のㇾマーク、何かエラーがあり止まると赤色の × マークになります。
+When you push the above file to the remote develop, Actions should start working. You can see it in action on GitHub by clicking on the Actions tab of the target repo - you'll see an orange circle when Actions is running. If it's done correctly you'll see a green ㇾ mark, or if there's an error and it stops, you'll see a red cross.
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/image/CheckWorkFlow.png?raw=true)
 
-問題なく動作が完了すると、 以下のように Artifact としてビルドしたものがアップされ、クリックすることでダウンロードできます。
+If it works successfully, the build is uploaded as Artifact, as shown below, and you can download it by clicking on it.
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/image/Artifact.png?raw=true)
 
-# これをやる利点
+## The advantages of doing this
 
-例えばリリースするデータを main ブランチで管理しているとします。main ブランチに直接プッシュしたとき、そのデータがちゃんとビルドできるデータであるかは個人の注意に依存しています。
-それを避けるために、main ブランチにプルリクした際、ここで設定した CI が動くようにしています。
-うっかり動かないものでも main ブランチにプルリクすると CI でチェックされるので以下のように check が failed になり、ミスを未然に防げます。
+For example, let's say you're managing data to be released in your main branch, and when you push directly to your main branch, it's up to you to make sure the data is buildable.
+To avoid this, we make sure that the CI configured here works when a pull request is made to the main branch.
+Even if the data is not working, it is checked by CI when it is pulled into the main branch, so the check is failed as shown below to prevent mistakes.
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/pullreq.png?raw=true)
+
+---
+
+### Prev
+[Introduction](intro)
+
+### Next
+[Evaluate Code Quality](code-quality)
+
+[Return to Top](tutorial-chapters)

@@ -1,46 +1,52 @@
----
-title: "Code Quality を測る"
----
+# Evaluate Code Quality
 
-# はじめに
+We will use a service called Codacy to evaluate the quality of the code.
 
-Codacy というサービスを使って、コードの品質を測ってみます。
+## What is Codacy?
 
-# Codacy とは
+It's a code review type CI service. There are several code review services out there, but we'll use this one because it reviews C# and is easy to integrate with GitHub.
+This service is free in public repositories.
 
-コードレビュータイプの CI サービスです。コードレビューするサービスはいくつかありますが、C# をレビューしてくれて Github との連携が簡単なことから今回はこのサービスを使用します。
-このサービスはパブリックなリポジトリではフリーになっております。
-
-公式サイト
+Official Website
 [codacy](https://www.codacy.com/)
 
-# 使い方
+## How to use
 
-まず Codacy のアカウントを作成します。Github と連携するので、Github のアカウントを使ってサインアップすると連携がスムーズです。
-アカウントを作成すると連携するリポジトリを選択する画面になるので、対象にしたいリポジトリを選んでください。
-デフォルトでのコード解析の対象は main ブランチになっています。開発は develop ブランチで行うことが多いので、以下のように対象のブランチを変更しておくと良いです。
+First, create a Codacy account; since it will be integrated with GitHub, sign up with your GitHub account to ensure smooth integration.
+After creating your account, you will be prompted to select the repository you want to integrate.
+By default, the main branch is used for code analysis. Since development is often done on the develop branch, you may want to change the target branch as shown below.
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/codacy.png?raw=true)
 
-連携ができていれば自動でコードに対する解析が実行され、Files を開くと以下のように各ファイルごとにコードクオリティがどの程度かが表示されます。ここでは ”GrasshopperCISample/Util.cs” の 1 つだけがクオリティ C であることがわかります。
+If you have a successful integration, the code is automatically analyzed, and when you open the files, you can see how the code quality is for each file as shown below. You can see that only one file, "GrasshopperCISample/Util.cs", has a quality C.
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/quality.png?raw=true)
 
-該当のファイルを選択するとどこでクオリティが下がっているか確認できるので、修正時は参考にしてください。
+If you select the file to see where the quality is degraded, you can use it as a reference when making corrections.
 
-# プルリク時に動くようにする
+## Pull request to work on
 
-Github の Marketplace からインストールしましょう。
+Let's install codacy plugin from Github's Marketplace.
 [Marketplace/Apps/Codacy](https://github.com/marketplace/codacy)
 
-# これをやる利点
+## The advantages of doing this
 
-静的解析しているだけでビルドエラーなどを見ているわけではありません。ですので結果として出てくるものは、例えば以下のようなものになります。
+This service is only doing static analysis and not looking for build errors and so on. So what you'll see as a result, for example, is the following
 
-- 使っていない変数がある
-- 変数を readonly にできる
-- コードの中に重複がある
-- リダンダントな表現がある（例えば不要な () など）
+- Unused variables.
+- The variable can be readonly
+- There are duplicates in the code
+- There are redundant expressions (e.g. unnecessary () etc.)
 
-これらはもちろん修正しなくてもビルドはできますが、コードの読みやすさから言えば直したほうが望ましい部分たちです。
-なくてもよい部分は翌日以降このコードを読むであろう、ナニモワカラナイ自分に向けて、極力きれいにしておくと翌日の自分を助けることができます。
+Of course, you can build the code without fixing them, but they are desirable for the readability of the code.
+The parts that don't need to be fixed will help you the next day if you clean them up as much as you can for your unknowing self, who will be reading this code the next day or later.
+
+---
+
+### Prev
+[Built with GitHub Actions](build-with-github-actions)
+
+### Next
+[Evaluate Code Maintainability](code-maintenace)
+
+[Return to Top](tutorial-chapters)

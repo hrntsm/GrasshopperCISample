@@ -1,13 +1,16 @@
----
-title: "参考"
----
+# Reference repositories, etc.
 
-# 参考のリポジトリなど
-
-この BOOK の内容で作成した Github のリポジトリが以下です。必要に応じてクローンして使ってください。
+The following is the Github repository created with the contents of this page. Clone it and use it if necessary.
 
 [hrntsm/GrasshopperCISample](https://github.com/hrntsm/GrasshopperCISample)
 
-なお、この本の内容は、以下のリポジトリの内容の一部を抜粋してまとめたものになります。興味がある方はこちらも参照してください。
+In addition, the content of this page is a compilation of excerpts from the following repositories. Those who are interested may also be interested in
 
 [philipbelesky/GrasshopperBootstrap](https://github.com/philipbelesky/GrasshopperBootstrap)
+
+---
+
+### Prev
+[Create your own pages using GitHub Pages](add-github-pages)
+
+[Return to Top](tutorial-chapters)
