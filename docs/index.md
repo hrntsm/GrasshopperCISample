@@ -5,10 +5,10 @@ Grasshopper コンポーネントを開発して、それを紹介するサイ�
 ## How to use
 
 日本語はこちら
-- [Github と CI を使った Grasshopper コンポーネント開発！！](https://zenn.dev/hrntsm/books/grasshopper-ci)
+- [使い方](https://zenn.dev/hrntsm/books/grasshopper-ci/jp/tutorial-chapters)
 
 Engilish version is following link.
-- [Introduction to Usage](https://hrntsm.github.io/GrasshopperCISample/tutorial-chapters)
+- [Introduction to Usage](https://hrntsm.github.io/GrasshopperCISample/en/tutorial-chapters)
 
 ---
 
