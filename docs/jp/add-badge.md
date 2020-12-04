@@ -40,7 +40,7 @@ Codacy
 ---
 
 ### 前のページ
-[Code Maintainability を測る](jp/code-maintenace)
+[Code Maintainability を測る](code-maintenace)
 
 ### 次のページ
-[GitHub pages を使って作ったものを紹介するページを作る](jp/add-github-pages)
+[GitHub pages を使って作ったものを紹介するページを作る](add-github-pages)

@@ -48,7 +48,7 @@ Github の Marketplace からインストールしましょう。
 ---
 
 ### 前のページ
-[GitHub Actions でコンポーネントをビルドする](jp/build-with-github-actions)
+[GitHub Actions でコンポーネントをビルドする](build-with-github-actions)
 
 ### 次のページ
-[Code Maintainability を測る](jp/code-maintenace)
+[Code Maintainability を測る](code-maintenace)

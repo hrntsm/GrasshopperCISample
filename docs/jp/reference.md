@@ -15,4 +15,4 @@ title: "参考"
 ---
 
 ### 前のページ
-[GitHub pages を使って作ったものを紹介するページを作る](jp/add-github-pages)
+[GitHub pages を使って作ったものを紹介するページを作る](add-github-pages)

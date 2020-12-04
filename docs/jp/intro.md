@@ -17,4 +17,4 @@ title: "はじめに"
 ---
 
 ### 次のページ
-[GitHub Actions でコンポーネントをビルドする](jp/build-with-github-actions)
+[GitHub Actions でコンポーネントをビルドする](build-with-github-actions)

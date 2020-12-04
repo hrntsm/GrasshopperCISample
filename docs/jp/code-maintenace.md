@@ -40,7 +40,7 @@ Code Climate の以下の箇所から適宜設定しましょう。
 ---
 
 ### 前のページ
-[Code Quality を測る](jp/code-quality)
+[Code Quality を測る](code-quality)
 
 ### 次のページ
-[README にバッジを追加する](jp/add-badge)
+[README にバッジを追加する](add-badge)

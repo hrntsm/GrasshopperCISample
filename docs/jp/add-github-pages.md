@@ -39,7 +39,7 @@ index.md の内容 [GrasshopperCISample/docs](https://github.com/hrntsm/Grasshop
 ---
 
 ### 前のページ
-[README にバッジを追加する](jp/add-badge)
+[README にバッジを追加する](add-badge)
 
 ### 次のページ
-[参照](jp/reference)
+[参照](reference)

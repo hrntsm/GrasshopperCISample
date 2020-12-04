@@ -114,7 +114,7 @@ jobs:
 ---
 
 ### 前のページ
-[はじめに](jp/jp-intro)
+[はじめに](intro)
 
 ### 次のページ
-[Code Quality を測る](jp/code-quality)
+[Code Quality を測る](code-quality)
