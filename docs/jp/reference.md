@@ -11,3 +11,8 @@ title: "参考"
 なお、この本の内容は、以下のリポジトリの内容の一部を抜粋してまとめたものになります。興味がある方はこちらも参照してください。
 
 [philipbelesky/GrasshopperBootstrap](https://github.com/philipbelesky/GrasshopperBootstrap)
+
+---
+
+### 前のページ
+[GitHub pages を使って作ったものを紹介するページを作る](jp/add-github-pages)

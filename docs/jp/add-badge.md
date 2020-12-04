@@ -36,3 +36,11 @@ Codacy
 いいね 👍
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/README.png?raw=true)
+
+---
+
+### 前のページ
+[Code Maintainability を測る](jp/code-maintenace)
+
+### 次のページ
+[GitHub pages を使って作ったものを紹介するページを作る](jp/add-github-pages)

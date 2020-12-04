@@ -13,3 +13,8 @@ title: "はじめに"
 # ちなみに
 
 こちらは [Tokyo AEC Industry Dev Group](https://www.meetup.com/ja-JP/Tokyo-AEC-Industry-Dev-Group) で行われる 2020/12/12 のハンズオンの資料になります。
+
+---
+
+### 次のページ
+[GitHub Actions でコンポーネントをビルドする](jp/build-with-github-actions)

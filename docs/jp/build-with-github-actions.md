@@ -110,3 +110,11 @@ jobs:
 うっかり動かないものでも main ブランチにプルリクすると CI でチェックされるので以下のように check が failed になり、ミスを未然に防げます。
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/pullreq.png?raw=true)
+
+---
+
+### 前のページ
+[はじめに](jp/jp-intro)
+
+### 次のページ
+[Code Quality を測る](jp/code-quality)

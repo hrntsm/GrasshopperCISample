@@ -35,3 +35,11 @@ https:// YOUR_ACOUNT_NAME .github.io/REPOSITORY_Name/
 index.md の内容 [GrasshopperCISample/docs](https://github.com/hrntsm/GrasshopperCISample/tree/main/docs)
 
 デプロイされたサイト [GrasshopperCISample](https://hrntsm.github.io/GrasshopperCISample/)
+
+---
+
+### 前のページ
+[README にバッジを追加する](jp/add-badge)
+
+### 次のページ
+[参照](jp/reference)

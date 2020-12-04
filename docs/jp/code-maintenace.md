@@ -36,3 +36,11 @@ Codacy 重複する部分もありますが、違いはメンテナンス性に�
 Code Climate の以下の箇所から適宜設定しましょう。
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/PullreqClimate.png?raw=true)
+
+---
+
+### 前のページ
+[Code Quality を測る](jp/code-quality)
+
+### 次のページ
+[README にバッジを追加する](jp/add-badge)
