@@ -25,27 +25,17 @@ jobs:
        
       - name: Build the application
         run: msbuild /p:Configuration=Release
+        
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+
+      - name: Run Test
+        run: dotnet test
 
       - name: Upload release build of plugin as artefact
         uses: actions/upload-artifact@v2
         with:
           name: GrasshopperComponent
           path: ./GrasshopperCISample/bin/GrasshopperCISample.gha
-
-  Test:
-    runs-on: ubuntu-latest
-  
-    steps:
-    - uses: actions/checkout@v2
-        
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-        
-    - name: Install dependencies
-      run: dotnet restore
-        
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-        
-    - name: Test
-      run: dotnet test
