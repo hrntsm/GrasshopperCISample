@@ -25,6 +25,12 @@ jobs:
        
       - name: Build the application
         run: msbuild /p:Configuration=Release
+        
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+
+      - name: Run Test
+        run: dotnet test GrasshopperCISampleTests\bin\Release\GrasshopperCISampleTests.dll
 
       - name: Upload release build of plugin as artefact
         uses: actions/upload-artifact@v2
