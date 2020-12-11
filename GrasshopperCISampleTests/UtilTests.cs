@@ -14,7 +14,7 @@ namespace GrasshopperCISample.Tests
         [TestMethod()]
         public void AddTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(2, Util.Add(1, 1));
         }
     }
 }
