@@ -13,7 +13,7 @@ The ability to test and build using a virtual machine or container when you do a
 
 ## Things to do
 
-Build a component using GitHub Actions and save it on GitHub when you do the following
+Build components and test functions using GitHub Actions and save it on GitHub when you do the following
 
 - Push or pull requests to the develop branch
 - Pull request to main branch
@@ -80,6 +80,14 @@ jobs:
       # Build
       - name: Build the application
         run: msbuild /p:Configuration=Release
+
+      # Set up dotnet core for test
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+
+      # Run Test
+      - name: Run Test
+        run: dotnet test GrasshopperCISampleTests\bin\Release\GrasshopperCISampleTests.dll
 
       # Upload files in the target path to GitHub
       - name: Upload build as artifact

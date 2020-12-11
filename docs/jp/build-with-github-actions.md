@@ -15,7 +15,7 @@ GitHub のリポにプッシュやプルリクなどの設定したアクショ�
 
 ## やりたいこと
 
-以下のときに、GitHub Actions を使ってコンポーネントをビルドして GitHub 上に保存する。
+以下のときに、GitHub Actions を使ってコンポーネントをビルドし、テストが通れば GitHub 上にデータに保存する。
 
 - develop にプッシュ、プルリク
 - main にプルリク
@@ -58,7 +58,7 @@ on:
 jobs:
   build:
     # Github Actions での Windows の最新の環境を指定
-    #（現在は Windows Server 2019 になる ）
+    #（現在は Windows Server 2019 になる）
     runs-on: windows-latest # windows-2019 でも同じ意味
 
     steps:
@@ -83,6 +83,14 @@ jobs:
       - name: Build the application
         run: msbuild /p:Configuration=Release
 
+      # Test向けに dotnet.exe をセットアップ
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+
+      # Test を実行
+      - name: Run Test
+        run: dotnet test GrasshopperCISampleTests\bin\Release\GrasshopperCISampleTests.dll
+
       # 対象パスにあるファイルを GitHub にアップロードする
       - name: Upload build as artifact
         uses: actions/upload-artifact@v2
@@ -103,9 +111,9 @@ jobs:
 
 ## これをやる利点
 
-例えばリリースするデータを main ブランチで管理しているとします。main ブランチに直接プッシュしたとき、そのデータがちゃんとビルドできるデータであるかは個人の注意に依存しています。
-それを避けるために、main ブランチにプルリクした際、ここで設定した CI が動くようにしています。
-うっかり動かないものでも main ブランチにプルリクすると CI でチェックされるので以下のように check が failed になり、ミスを未然に防げます。
+例えばリリースするデータを main ブランチで管理しているとします。main ブランチに直接プッシュしたとき、そのデータがちゃんとビルドできるデータであるかは個人の注意に依存しています。  
+それを避けるために、main ブランチにプルリクした際、ここで設定した CI が動くようにしています。  
+うっかり動かないものでも main ブランチにプルリクすると CI でチェックされるので以下のように check が failed になり、ミスを未然に防げます。  
 
 ![](https://github.com/hrntsm/zenn_articles/blob/master/books/grasshopper-ci/image/pullreq.png?raw=true)
 
