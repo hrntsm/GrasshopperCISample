@@ -31,3 +31,21 @@ jobs:
         with:
           name: GrasshopperComponent
           path: ./GrasshopperCISample/bin/GrasshopperCISample.gha
+
+  Test:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - uses: actions/checkout@v2
+        
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+        
+    - name: Install dependencies
+      run: dotnet restore
+        
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+        
+    - name: Test
+      run: dotnet test
